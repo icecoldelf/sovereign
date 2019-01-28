@@ -34,6 +34,7 @@ function onMessageHandler (target, context, msg, self) {
   const commandName = msg.trim();
   const subscriber = false;
   console.log(context.subscriber);
+  console.log(context["user-type"]);
   // Save message in DynamoDB
   var params = {
     Item: {
