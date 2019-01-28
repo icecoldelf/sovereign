@@ -7,7 +7,7 @@ const opts = {
     password: "oauth:lpsjzwbexroxgnw0j81uxfm8wq7feu"
   },
   channels: [
-    "thefew"
+    "theenlightenedbot"
   ]
 };
 
