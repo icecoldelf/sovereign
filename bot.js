@@ -1,6 +1,7 @@
 const tmi = require('tmi.js');
 var AWS = require('aws-sdk');
 AWS.config.update({region: 'us-east-1'});
+
 var dynamodb = new AWS.DynamoDB();
 
 // Define configuration options
@@ -33,12 +34,15 @@ function onMessageHandler (target, context, msg, self) {
   // Save message in DynamoDB
   var params = {
     Item: {
+     "timestamp": {
+       S: Date.now().toString()
+     }, 
      "message": {
        S: commandName
       }
     }, 
     ReturnConsumedCapacity: "TOTAL", 
-    TableName: "sov_chat"
+    TableName: "chat"
    };
    dynamodb.putItem(params, function(err, data) {
      if (err) console.log(err, err.stack); // an error occurred
