@@ -42,13 +42,13 @@ function onMessageHandler (target, context, msg, self) {
      },
      "message": {
        S: commandName
-     },
+     }/*,
      "subscriber": {
        B: context.subscriber.toString()
      },
      "user-type": {
        S: context["user-type"]
-     }
+     }*/
     }, 
     ReturnConsumedCapacity: "TOTAL", 
     TableName: "chat"
