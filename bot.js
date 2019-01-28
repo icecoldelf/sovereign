@@ -1,4 +1,6 @@
 const tmi = require('tmi.js');
+var AWS = require('aws-sdk');
+var dynamodb = new AWS.DynamoDB();
 
 // Define configuration options
 const opts = {
@@ -27,6 +29,20 @@ function onMessageHandler (target, context, msg, self) {
 
   // Remove whitespace from chat message
   const commandName = msg.trim();
+  // Save message in DynamoDB
+  var params = {
+    Item: {
+     "message": {
+       S: commandName
+      }
+    }, 
+    ReturnConsumedCapacity: "TOTAL", 
+    TableName: "sov_chat"
+   };
+   dynamodb.putItem(params, function(err, data) {
+     if (err) console.log(err, err.stack); // an error occurred
+     else     console.log(data);           // successful response
+   });
 
   // If the command is known, let's execute it
   if (commandName === '!dice') {
