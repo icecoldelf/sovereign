@@ -46,6 +46,9 @@ function onMessageHandler (target, context, msg, self) {
      "message": {
        S: commandName
      },
+     "channel": {
+       S: target
+     },
      "subscriber": {
        BOOL: context.subscriber
      },
@@ -62,7 +65,7 @@ function onMessageHandler (target, context, msg, self) {
    });
 
   // If the command is known, let's execute it
-  if (commandName === '!dice') {
+  if (commandName === '!diceasdf') {
     const num = rollDice();
     client.say(target, `You rolled a ${num}`);
     console.log(`* Executed ${commandName} command`);
