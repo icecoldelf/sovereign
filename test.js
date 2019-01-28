@@ -9,7 +9,7 @@ const postData = querystring.stringify({
 const options = {
   hostname: 'api.twitch.tv',
   port: 443,
-  path: '/helix/streams?game_id=33214',
+  path: '/helix/games?name=Star%20Citizen',
   method: 'GET',
   headers: {
     'Content-Type': 'application/x-www-form-urlencoded',
