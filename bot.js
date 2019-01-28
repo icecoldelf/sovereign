@@ -38,7 +38,7 @@ function onMessageHandler (target, context, msg, self) {
   }
 }
 
-// Function called when the "dice" command is issued
+// Function called when the "dice" command is issued 
 function rollDice () {
   const sides = 6;
   return Math.floor(Math.random() * sides) + 1;
