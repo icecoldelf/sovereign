@@ -34,11 +34,21 @@ function onMessageHandler (target, context, msg, self) {
   // Save message in DynamoDB
   var params = {
     Item: {
-     "timestamp": Date.now(),
-     "display-name": context["display-name"],
-     "message": commandName,
-     "subscriber": context.subscriber,
-     "user-type": context["user-type"]
+     "timestamp": {
+       S: Date.now()
+     },
+     "display-name": {
+       S: context["display-name"]
+     },
+     "message": {
+       S: commandName
+     },
+     "subscriber": {
+       S: context.subscriber
+     },
+     "user-type": {
+       S: context["user-type"]
+     }
     }, 
     ReturnConsumedCapacity: "TOTAL", 
     TableName: "chat"
