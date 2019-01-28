@@ -45,7 +45,7 @@ function onMessageHandler (target, context, msg, self) {
        S: commandName
      },
      "subscriber": {
-       BOOL: context.subscriber
+       BOOL: context.subscriber || false
      },
      "user-type": {
        S: context["user-type"]
