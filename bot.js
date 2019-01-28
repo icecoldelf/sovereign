@@ -35,7 +35,7 @@ function onMessageHandler (target, context, msg, self) {
   var params = {
     Item: {
      "timestamp": {
-       S: Date.now()
+       S: Date.now().toString()
      },
      "display-name": {
        S: context["display-name"]
@@ -44,7 +44,7 @@ function onMessageHandler (target, context, msg, self) {
        S: commandName
      },
      "subscriber": {
-       S: context.subscriber
+       S: context.subscriber.toString()
      },
      "user-type": {
        S: context["user-type"]
