@@ -6,9 +6,9 @@ const postData = querystring.stringify({
 });
 
 const options = {
-  hostname: 'api.twitch.tv/helix/streams?game_id=33214',
+  hostname: 'api.twitch.tv',
   port: 443,
-  path: '',
+  path: '/helix/streams?game_id=33214',
   method: 'GET',
   headers: {
     'Content-Type': 'application/x-www-form-urlencoded',
@@ -34,5 +34,5 @@ req.on('error', (e) => {
 });
 
 // write data to request body
-req.write(postData);
+//req.write(postData);
 req.end();
