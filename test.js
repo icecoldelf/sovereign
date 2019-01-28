@@ -6,9 +6,9 @@ const postData = querystring.stringify({
 });
 
 const options = {
-  hostname: 'https://api.twitch.tv/helix/streams?game_id=33214',
+  hostname: 'api.twitch.tv/helix/streams?game_id=33214',
   port: 80,
-  path: '/upload',
+  path: '',
   method: 'GET',
   headers: {
     'Content-Type': 'application/x-www-form-urlencoded',
