@@ -12,7 +12,8 @@ const opts = {
   },
   channels: [
     "theenlightenedbot",
-    "thefew"
+    "thefew",
+    "steelrain27"
   ]
 };
 
