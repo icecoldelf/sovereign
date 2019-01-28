@@ -1,4 +1,5 @@
 const http = require('http');
+const https = require('https');
 const querystring = require('query-string');
 
 const postData = querystring.stringify({
@@ -17,7 +18,7 @@ const options = {
   }
 };
 
-const req = http.request(options, (res) => {
+const req = https.request(options, (res) => {
   console.log(`STATUS: ${res.statusCode}`);
   console.log(`HEADERS: ${JSON.stringify(res.headers)}`);
   res.setEncoding('utf8');
