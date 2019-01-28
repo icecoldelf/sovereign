@@ -7,7 +7,7 @@ const postData = querystring.stringify({
 
 const options = {
   hostname: 'api.twitch.tv/helix/streams?game_id=33214',
-  port: 80,
+  port: 443,
   path: '',
   method: 'GET',
   headers: {
