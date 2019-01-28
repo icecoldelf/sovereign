@@ -35,11 +35,20 @@ function onMessageHandler (target, context, msg, self) {
   var params = {
     Item: {
      "timestamp": {
-       S: Date.now().toString()
-     }, 
+       S: Date.now()
+     },
+     "display-name": {
+       S: context["display-name"]
+     },
      "message": {
-       S: commandName
-      }
+      S: commandName
+     },
+     "subscriber": {
+       S: context.subscriber
+     },
+     "user-type": {
+       S: context["user-type"]
+     }
     }, 
     ReturnConsumedCapacity: "TOTAL", 
     TableName: "chat"
