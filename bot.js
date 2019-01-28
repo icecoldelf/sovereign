@@ -32,6 +32,7 @@ function onMessageHandler (target, context, msg, self) {
 
   // Remove whitespace from chat message
   const commandName = msg.trim();
+  const subscriber = context.subscriber || false;
   // Save message in DynamoDB
   var params = {
     Item: {
@@ -45,7 +46,7 @@ function onMessageHandler (target, context, msg, self) {
        S: commandName
      },
      "subscriber": {
-       BOOL: context.subscriber || false
+       BOOL: subscriber
      },
      "user-type": {
        S: context["user-type"]
