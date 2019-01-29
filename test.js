@@ -18,28 +18,30 @@ const options = {
   }
 };
 
-var getStreams = function() {
-  const req = https.request(options, (res) => {
-    console.log(`STATUS: ${res.statusCode}`);
-    console.log(`HEADERS: ${JSON.stringify(res.headers)}`);
-    res.setEncoding('utf8');
-    res.on('data', (chunk) => {
+module.exports = {
+  getStreams: function() {
+    const req = https.request(options, (res) => {
+      console.log(`STATUS: ${res.statusCode}`);
+      console.log(`HEADERS: ${JSON.stringify(res.headers)}`);
+      res.setEncoding('utf8');
+      res.on('data', (chunk) => {
 
-      console.log(`BODY: ${chunk}`);
+        console.log(`BODY: ${chunk}`);
+      });
+      res.on('end', () => {
+        console.log('No more data in response.');
+      });
     });
-    res.on('end', () => {
-      console.log('No more data in response.');
+
+
+    req.on('error', (e) => {
+      console.error(`problem with request: ${e.message}`);
     });
-  });
 
-
-  req.on('error', (e) => {
-    console.error(`problem with request: ${e.message}`);
-  });
-
-  // write data to request body
-  //req.write(postData);
-  req.end();
+    // write data to request body
+    //req.write(postData);
+    req.end();
+  }
 }
 
 module.exports = getStreams;

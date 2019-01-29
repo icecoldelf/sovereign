@@ -1,7 +1,7 @@
 const express = require('express');
 //import React from 'react';
 //import ReactDOM from 'react-dom';
-const getStreams = require('test');
+const getStreams = require('./test');
 
 //const GracefulShutdownManager = require('@moebius/http-graceful-shutdown').GracefulShutdownManager;
 
