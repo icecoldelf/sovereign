@@ -1,13 +1,13 @@
 const express = require('express');
 //import React from 'react';
 //import ReactDOM from 'react-dom';
-const getStreams = require('./test');
+const test = require('./test');
 
 //const GracefulShutdownManager = require('@moebius/http-graceful-shutdown').GracefulShutdownManager;
 
 const app = express();
 
-app.get('/', (req, res) => res.send(getStreams()));
+app.get('/', (req, res) => res.send(test.getStreams));
 
 app.get('/buck', (req, res) => res.send('Buck is amazing!'));
 
