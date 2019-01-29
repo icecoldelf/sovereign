@@ -43,5 +43,3 @@ module.exports = {
     req.end();
   }
 }
-
-module.exports = getStreams;
