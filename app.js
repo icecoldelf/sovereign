@@ -1,7 +1,9 @@
 const express = require('express');
 //import React from 'react';
 //import ReactDOM from 'react-dom';
-const twitch = require('./twitch');
+const Twitch = require('./twitch');
+
+var twitch = new Twitch('mjy60l6upiqb62b46kq1hyp6gwodow');
 
 //const GracefulShutdownManager = require('@moebius/http-graceful-shutdown').GracefulShutdownManager;
 
