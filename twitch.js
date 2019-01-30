@@ -1,4 +1,5 @@
 //file twitch.js
+const https = require('https');
 const querystring = require('query-string');
 
 const postData = querystring.stringify({
