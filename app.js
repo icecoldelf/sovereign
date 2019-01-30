@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
     
 });
 
-app.get('/buck', (req, res) => res.send(twitch.pizza()));
+app.get('/buck', (req, res) => res.send(twitch.pizza(response)));
 
 const server = app.listen(3000, () => console.log('Example app listening on port 3000!'));
 
