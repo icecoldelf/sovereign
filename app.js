@@ -7,7 +7,7 @@ const twitch = require('./twitch');
 
 const app = express();
 
-app.get('/', (req, res) => res.send(twitch.getStreams);
+app.get('/', (req, res) => res.send(twitch.getStreams));
 
 app.get('/buck', (req, res) => res.send('Buck is amazing!'));
 
