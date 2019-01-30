@@ -21,8 +21,12 @@ class Twitch {
         };
     }
 
+    pizza(cb) {
+
+    }
+
     getStreams(cb) {
-        let data;
+        //let data;
         const req = https.request(this.options, (res) => {
             console.log(`STATUS: ${res.statusCode}`);
             console.log(`HEADERS: ${JSON.stringify(res.headers)}`);
@@ -30,6 +34,7 @@ class Twitch {
             res.on('data', (chunk) => {
                 console.log(`BODY: ${chunk}`);
                 data = chunk;
+                cb(chunk);
             });
             res.on('end', () => {
                 console.log('No more data in response.');
@@ -44,7 +49,7 @@ class Twitch {
         // write data to request body
         //req.write(postData);
         req.end(() => {
-            cb(data);
+            //cb(data);
         });
     }
 }
