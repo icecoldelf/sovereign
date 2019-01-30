@@ -21,17 +21,18 @@ class Twitch {
         };
     }
 
-    getStreams() {
+    getStreams(cb) {
+        let data;
         const req = https.request(this.options, (res) => {
             console.log(`STATUS: ${res.statusCode}`);
             console.log(`HEADERS: ${JSON.stringify(res.headers)}`);
             res.setEncoding('utf8');
             res.on('data', (chunk) => {
-              return chunk;
-              console.log(`BODY: ${chunk}`);
+                console.log(`BODY: ${chunk}`);
+                data = chunk;
             });
             res.on('end', () => {
-              console.log('No more data in response.');
+                console.log('No more data in response.');
             });
         });
       
@@ -42,7 +43,9 @@ class Twitch {
       
         // write data to request body
         //req.write(postData);
-        req.end();
+        req.end(() => {
+            cb(data);
+        });
     }
 }
 
