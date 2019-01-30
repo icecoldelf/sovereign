@@ -21,7 +21,7 @@ app.get('/buck', (req, res) => res.send('Buck is amazing!'));
 
 const server = app.listen(3000, () => console.log('Example app listening on port 3000!'));
 
-var happy = twitch.getStreams();
+//var happy = twitch.getStreams();
 
 console.log(happy);
 //const shutdownManager = new GracefulShutdownManager(server);
