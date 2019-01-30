@@ -1,4 +1,9 @@
 //file twitch.js
+const querystring = require('query-string');
+
+const postData = querystring.stringify({
+  'msg': 'Hello World!'
+});
 
 class Twitch {
     constructor(clientID) {
