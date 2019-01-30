@@ -23,7 +23,7 @@ const server = app.listen(3000, () => console.log('Example app listening on port
 
 //var happy = twitch.getStreams();
 
-console.log(happy);
+//console.log(happy);
 //const shutdownManager = new GracefulShutdownManager(server);
 
 /*process.on('SIGTERM', () => {
