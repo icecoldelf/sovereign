@@ -7,12 +7,15 @@ const twitch = require('./twitch');
 
 const app = express();
 
-app.get('/', (req, res) => res.send(twitch.getStreams));
+app.get('/', (req, res) => res.send('twitch.getStreams'));
 
 app.get('/buck', (req, res) => res.send('Buck is amazing!'));
 
 const server = app.listen(3000, () => console.log('Example app listening on port 3000!'));
 
+var happy = twitch.getStreams();
+
+console.log(happy);
 //const shutdownManager = new GracefulShutdownManager(server);
 
 /*process.on('SIGTERM', () => {
