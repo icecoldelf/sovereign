@@ -22,7 +22,7 @@ class Twitch {
     }
 
     pizza(cb) {
-
+        cb("afd");
     }
 
     getStreams(cb) {
@@ -48,9 +48,7 @@ class Twitch {
       
         // write data to request body
         //req.write(postData);
-        req.end(() => {
-            //cb(data);
-        });
+        req.end();
     }
 }
 
