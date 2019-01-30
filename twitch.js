@@ -22,6 +22,7 @@ class Twitch {
     }
 
     pizza(cb) {
+        data = chunk;
         cb("afd");
     }
 
@@ -33,7 +34,6 @@ class Twitch {
             res.setEncoding('utf8');
             res.on('data', (chunk) => {
                 console.log(`BODY: ${chunk}`);
-                //data = chunk;
                 cb(chunk);
             });
             res.on('end', () => {
