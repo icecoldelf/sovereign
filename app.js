@@ -9,7 +9,13 @@ var twitch = new Twitch('mjy60l6upiqb62b46kq1hyp6gwodow');
 
 const app = express();
 
-app.get('/', (req, res) => res.send(twitch.getStreams()));
+app.get('/', (req, res) => {
+    
+    twitch.getStreams(response => res.send(response));
+    //res.send();
+    //res.json();
+    
+});
 
 app.get('/buck', (req, res) => res.send('Buck is amazing!'));
 
