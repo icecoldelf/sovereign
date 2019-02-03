@@ -12,7 +12,7 @@ class AccountMgr {
     }
 }
 
-class Account {
+module.exports = class Account {
     constructor(callback) {
         this.happy = "Sovereign Bank";
         callback(this.happy);
@@ -26,5 +26,3 @@ class Account {
 
     }
 }
-
-module.export.Account;
