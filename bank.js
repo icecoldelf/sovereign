@@ -12,7 +12,7 @@ class AccountMgr {
     }
 }
 
-module.exports = class Account {
+class Account {
     constructor(callback) {
         this.happy = "Sovereign Bank";
         callback(this.happy);
@@ -25,4 +25,9 @@ module.exports = class Account {
     updateBalance(currencyType, amount, callback) {
 
     }
+}
+
+module.exports = {
+  AccountMgr : AccountMgr,
+  Account : Account
 }
