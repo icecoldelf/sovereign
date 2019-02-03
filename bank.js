@@ -26,3 +26,5 @@ class Account {
 
     }
 }
+
+module.export.Account;
