@@ -46,7 +46,7 @@ class Account {
         } else {
           if (Object.keys(data).length === 0 && data.constructor === Object) {
             console.log("No account with that number.");
-            createAccount(function(account) {
+            this.createAccount(function(account) {
               console.log(account);
               callback(account);
             });
