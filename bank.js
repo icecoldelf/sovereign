@@ -46,6 +46,7 @@ class Account {
         } else {
           if (Object.keys(data).length === 0 && data.constructor === Object) {
             console.log("No account with that number.");
+              callback("You don't have an account.");
           } else {
             console.log(data);
           }
@@ -53,7 +54,7 @@ class Account {
       });
 
       if (callback) {
-        callback("winning");
+        //callback("winning");
       }
     }
 
