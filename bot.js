@@ -97,7 +97,7 @@ function onMessageHandler (target, context, msg, self) {
 
   // If the command is known, let's execute it
   if (commandName === '!bank') {
-    account = new Account(response => client.say(target, response));
+    account = new bank.Account(response => client.say(target, response));
   }
   
   if (commandName === '!diceasdf') {
