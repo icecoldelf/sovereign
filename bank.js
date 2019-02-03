@@ -27,9 +27,9 @@ class Account {
         currencyType = null;
       }
 
-      if (callback) {
+      //if (callback) {
         callback("winning");
-      }
+      //}
     }
 
     updateBalance(currencyType, amount, callback) {
