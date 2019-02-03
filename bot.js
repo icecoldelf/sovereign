@@ -99,7 +99,7 @@ function onMessageHandler (target, context, msg, self) {
   if (commandName === '!bank') {
     account = new bank.Account(response => client.say(target, response.happy));
   } else if (commandName === '!balance') {
-    happy = new bank.Account(function(account) {
+    happy = new bank.Account(account => {
       account.getBalance(response => client.say(target, response));
     });
   } else if (commandName === '!diceasdf') {
