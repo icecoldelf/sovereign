@@ -12,7 +12,7 @@ class AccountMgr {
 
 class Account {
     constructor(callback) {
-      //this.happy = "Sovereign Bank";
+      this.happy = "Sovereign Bank";
 
       if (callback) {
         callback(this);
