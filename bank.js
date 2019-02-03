@@ -88,6 +88,7 @@ class Account {
         if (err) {
 
         } else {
+          console.log("data: " + data);
           callback(data);
         }
       });
