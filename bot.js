@@ -1,6 +1,7 @@
 const tmi = require('tmi.js');
-var AWS = require('aws-sdk');
+const AWS = require('aws-sdk');
 const https = require('https');
+const bank = require('./bank');
 AWS.config.update({region: 'us-east-1'});
 
 const options = {
@@ -95,13 +96,21 @@ function onMessageHandler (target, context, msg, self) {
    });
 
   // If the command is known, let's execute it
+  if (commandName === '!bank') {
+    account = new Account(response => client.say(target, response));
+  }
+  
   if (commandName === '!diceasdf') {
     const num = rollDice();
     client.say(target, `You rolled a ${num}`);
     console.log(`* Executed ${commandName} command`);
-  } else {
+  } 
+  else {
     console.log(`* Unknown command ${commandName}`);
   }
+
+  // Temp functionality to test new bank class
+  
 }
 
 // Function called when the "dice" command is issued 
