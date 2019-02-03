@@ -40,13 +40,15 @@ class Account {
         TableName: "sovereignBank"
       };
 
+      //If no account exists, this will create an account
+      var that = this;
       dynamoDB.getItem(params,function(err, data) {
         if (err) {
           console.log(err, err.stack);
         } else {
           if (Object.keys(data).length === 0 && data.constructor === Object) {
             console.log("No account with that number.");
-            this.createAccount(function(account) {
+            that.createAccount(function(account) {
               console.log(account);
               callback(account);
             });
@@ -55,7 +57,7 @@ class Account {
             console.log(data);
           }
         }
-      }).bind(this);
+      });
 
       if (callback) {
         //callback("winning");
