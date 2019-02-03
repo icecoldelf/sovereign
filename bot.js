@@ -10,7 +10,6 @@ const options = {
   method: 'GET',
   headers: {
     'Content-Type': 'application/x-www-form-urlencoded',
-    'Content-Length': Buffer.byteLength(postData),
     'Client-ID': 'mjy60l6upiqb62b46kq1hyp6gwodow'
   }
 };
