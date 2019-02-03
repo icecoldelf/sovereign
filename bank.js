@@ -84,7 +84,7 @@ class Account {
         TableName: "sovereignBank"
       }
 
-      dynamoDB(params, function(err, data){
+      dynamoDB.putItem(params, function(err, data){
         if (err) {
 
         } else {
