@@ -41,8 +41,15 @@ class Account {
       };
 
       dynamoDB.getItem(params,function(err, data) {
-        if (err) console.log(err, err.stack); // an error occurred
-        else     console.log(data);
+        if (err) {
+          console.log(err, err.stack);
+        } else {
+          if (Object.keys(data).length === 0 && data.constructor === Object) {
+            console.log("No account with that number.");
+          } else {
+            console.log(data);
+          }
+        }
       });
 
       if (callback) {
