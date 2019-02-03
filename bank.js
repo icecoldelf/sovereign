@@ -39,7 +39,10 @@ class Account {
         TableName: "sovereignBank"
       };
 
-      dynamoDB.getItem();
+      dynamoDB.getItem(params,function(err, data) {
+        if (err) console.log(err, err.stack); // an error occurred
+        else     console.log(data);
+      });
 
       if (callback) {
         callback("winning");
