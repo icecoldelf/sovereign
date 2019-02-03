@@ -78,7 +78,7 @@ class Account {
               "gold": 0
             }
           }
-        }
+        },
         TableName: "sovereignBank"
       }
 
