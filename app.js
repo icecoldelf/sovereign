@@ -10,7 +10,7 @@ var twitch = new Twitch('mjy60l6upiqb62b46kq1hyp6gwodow');
 const app = express();
 
 app.get('/', (req, res) => {
-    
+    res.setHeader('Content-Type', 'application/json');
     twitch.getStreams(response => res.send(response));
     //res.send();
     //res.json();
