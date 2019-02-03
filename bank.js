@@ -55,7 +55,7 @@ class Account {
             console.log(data);
           }
         }
-      });
+      }).bind(this);
 
       if (callback) {
         //callback("winning");
