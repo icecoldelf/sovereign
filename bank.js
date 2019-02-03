@@ -1,3 +1,5 @@
+const AWS = require('aws-sdk');
+
 class AccountMgr {
     constructor(callback) {
 
@@ -6,23 +8,35 @@ class AccountMgr {
     getAccount(accountNumber, callback) {
 
     }
-
-    createAccount(callback) {
-
-    }
 }
 
 class Account {
     constructor(callback) {
-        this.happy = "Sovereign Bank";
-        callback(this.happy);
+      //this.happy = "Sovereign Bank";
+
+      if (callback) {
+        callback(this);
+      }
     }
 
     getBalance(currencyType, callback) {
 
+      //This allows currencyType to be an optional argument
+      if (typeof currencyType === "undefined") {
+        callback = currencyType;
+        currencyType = null;
+      }
+
+      if (callback) {
+        callback("winning");
+      }
     }
 
     updateBalance(currencyType, amount, callback) {
+
+    }
+
+    createAccount(callback) {
 
     }
 }
