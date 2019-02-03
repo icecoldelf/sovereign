@@ -46,7 +46,11 @@ class Account {
         } else {
           if (Object.keys(data).length === 0 && data.constructor === Object) {
             console.log("No account with that number.");
-              callback("You don't have an account.");
+            this.createAccount(function(account) {
+              console.log(account);
+              callback(account);
+            });
+            //callback("You don't have an account.");
           } else {
             console.log(data);
           }
@@ -63,7 +67,28 @@ class Account {
     }
 
     createAccount(callback) {
+      var params = {
+        Item: {
+          "accountNumber": {
+            S: this.accountNumber
+          },
+          "balances": {
+            M: {
+              "silver": 0,
+              "gold": 0
+            }
+          }
+        }
+        TableName: "sovereignBank"
+      }
 
+      dynamoDB(params, function(err, data){
+        if (err) {
+
+        } else {
+          callback(data);
+        }
+      });
     }
 }
 
