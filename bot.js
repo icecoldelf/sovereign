@@ -100,6 +100,7 @@ function onMessageHandler (target, context, msg, self) {
     account = new bank.Account(response => client.say(target, response.happy));
   } else if (commandName === '!balance') {
     new bank.Account(account => {
+      account.accountNumber = "asfd";
       account.getBalance(response => client.say(target, response));
     });
   } else if (commandName === '!diceasdf') {

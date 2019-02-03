@@ -1,4 +1,5 @@
 const AWS = require('aws-sdk');
+const dynamoDB = new AWS.DynamoDB();
 
 class AccountMgr {
     constructor(callback) {
@@ -13,6 +14,7 @@ class AccountMgr {
 class Account {
     constructor(callback) {
       this.happy = "Sovereign Bank";
+      this.accountNumber;
 
       if (callback) {
         callback(this);
@@ -27,9 +29,21 @@ class Account {
         currencyType = null;
       }
 
-      //if (callback) {
+      console.log("accountNumber: " + this.accountNumber);
+      var params = {
+        Key: {
+          "accountNumber": {
+            S: this.accountNumber
+          }
+        },
+        TableName: "sovereignBank"
+      };
+
+      dynamoDB.getItem();
+
+      if (callback) {
         callback("winning");
-      //}
+      }
     }
 
     updateBalance(currencyType, amount, callback) {
