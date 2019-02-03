@@ -19,13 +19,13 @@ class Account {
       }
     }
 
-    getBalance(currencyType, callback) {
+    getBalance(callback) {
 
       //This allows currencyType to be an optional argument
-      if (typeof currencyType === "undefined") {
+      /*if (typeof currencyType === "undefined") {
         callback = currencyType;
         currencyType = null;
-      }
+      }*/
 
       //if (callback) {
         callback("winning");
