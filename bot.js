@@ -98,15 +98,11 @@ function onMessageHandler (target, context, msg, self) {
   // If the command is known, let's execute it
   if (commandName === '!bank') {
     //account = new bank.Account(response => client.say(target, response));
-  }
-
-  if (commandName === '!balance') {
-    new bank.Account(function(account) {
+  } else if (commandName === '!balance') {
+    happy = new bank.Account(function(account) {
       account.getBalance(response => client.say(target, response));
     });
-  }
-  
-  if (commandName === '!diceasdf') {
+  } else if (commandName === '!diceasdf') {
     const num = rollDice();
     client.say(target, `You rolled a ${num}`);
     console.log(`* Executed ${commandName} command`);
