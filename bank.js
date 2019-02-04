@@ -53,12 +53,13 @@ class Account {
               that.getBalance(function(response){
                 callback(response);
               });
-              callback(account.toString());
+              //callback(account.toString());
             });
             //callback("You don't have an account.");
           } else {
             console.log("getBalance:" + Object.entries(data.Item.balances.M));
-            callback("test");
+            let balances = `Your balance is: silver coin: ${data.Item.balances.M.silver.S}, gold coin: ${data.Item.balances.M.gold.S}`;
+            callback(balances);
             //console.log(data);
           }
         }
