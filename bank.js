@@ -50,11 +50,15 @@ class Account {
             console.log("No account with that number.");
             that.createAccount(function(account) {
               console.log("account:" + account[0]);
+              that.getBalance(function(response){
+                callback(response);
+              });
               callback(account.toString());
             });
             //callback("You don't have an account.");
           } else {
-            console.log(data);
+            callback(this.accountNumber);
+            //console.log(data);
           }
         }
       });
