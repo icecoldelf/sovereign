@@ -102,7 +102,7 @@ function onMessageHandler (target, context, msg, self) {
     new bank.Account(account => {
       account.accountNumber = context["user-id"];
       account.getBalance(balances => {
-        let balanceString = `${client.username} balances are: Silver: ${balances.silver.N}, Gold: ${balances.gold.N}`;
+        let balanceString = `${context.username} balances are: Silver: ${balances.silver.N}, Gold: ${balances.gold.N}`;
         client.say(target, balanceString);
       });
     });
