@@ -77,10 +77,10 @@ class Account {
           "balances": {
             M: {
               "silver": {
-                N: 0
+                S: "0"
               },
               "gold": {
-                N: 0
+                S: "0"
               }
             }
           }
