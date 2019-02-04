@@ -58,7 +58,8 @@ class Account {
             //callback("You don't have an account.");
           } else {
             console.log("getBalance:" + Object.entries(data.Item.balances.M));
-            let balances = `Your balance is: silver coin: ${data.Item.balances.M.silver.N}, gold coin: ${data.Item.balances.M.gold.N}`;
+            //let balances = `Your balance is: silver coin: ${data.Item.balances.M.silver.N}, gold coin: ${data.Item.balances.M.gold.N}`;
+            let balances = data.Item.balances.M;
             callback(balances);
             //console.log(data);
           }

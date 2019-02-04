@@ -101,7 +101,10 @@ function onMessageHandler (target, context, msg, self) {
   } else if (commandName === '!balance') {
     new bank.Account(account => {
       account.accountNumber = context["user-id"];
-      account.getBalance(response => client.say(target, response));
+      account.getBalance(balances => {
+        let balanceString = `${client.username} balances are: Silver: ${balances.silver.N}, ${balances.gold.N}`;
+        client.say(target, response);
+      });
     });
   } else if (commandName === '!diceasdf') {
     const num = rollDice();
