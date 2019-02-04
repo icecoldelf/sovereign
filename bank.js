@@ -76,8 +76,12 @@ class Account {
           },
           "balances": {
             M: {
-              "silver": 0,
-              "gold": 0
+              "silver": {
+                N: 0
+              },
+              "gold": {
+                N: 0
+              }
             }
           }
         },
