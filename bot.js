@@ -103,7 +103,7 @@ function onMessageHandler (target, context, msg, self) {
       account.accountNumber = context["user-id"];
       account.getBalance(balances => {
         let balanceString = `${client.username} balances are: Silver: ${balances.silver.N}, ${balances.gold.N}`;
-        client.say(target, response);
+        client.say(target, balanceString);
       });
     });
   } else if (commandName === '!diceasdf') {
