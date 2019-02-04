@@ -50,7 +50,7 @@ class Account {
             console.log("No account with that number.");
             that.createAccount(function(account) {
               console.log(account);
-              callback(account);
+              callback(account.toString());
             });
             //callback("You don't have an account.");
           } else {
