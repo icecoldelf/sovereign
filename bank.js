@@ -57,7 +57,7 @@ class Account {
             });
             //callback("You don't have an account.");
           } else {
-            callback(this.accountNumber);
+            callback("test");
             //console.log(data);
           }
         }
