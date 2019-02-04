@@ -57,7 +57,7 @@ class Account {
             });
             //callback("You don't have an account.");
           } else {
-            console.log("getBalance:" + Object.entries(data.Item.balances));
+            console.log("getBalance:" + Object.entries(data.Item.balances.M));
             callback("test");
             //console.log(data);
           }
