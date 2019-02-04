@@ -49,7 +49,7 @@ class Account {
           if (Object.keys(data).length === 0 && data.constructor === Object) {
             console.log("No account with that number.");
             that.createAccount(function(account) {
-              console.log(account);
+              console.log("account:" + account);
               callback(account.toString());
             });
             //callback("You don't have an account.");
