@@ -103,6 +103,7 @@ function onMessageHandler (target, context, msg, self) {
   switch(commandArray[1]) {
     case 'balance': checkBalance(commandArray, context, response => client.say(target, response));
     case 'happy': client.say(target, "Yaaay!");
+    default: {}
   } 
 
   function checkBalance(commandArray, context, callback) {
