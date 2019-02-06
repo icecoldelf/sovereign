@@ -95,7 +95,23 @@ function onMessageHandler (target, context, msg, self) {
      else     console.log(data);           // successful response
    });
 
+  // Use switch instead of if statements for readability
+  switch(commandName) {
+    case '!balance': checkBalance(context, response => client.say(target, response));
+
+  } 
+
+  function checkBalance(context, callback) {
+    new bank.Account(account => {
+      account.accountNumber = context["user-id"];
+      account.getBalance(balances => {
+        let balanceString = `${context.username} balances are: Silver: ${balances.silver.N}, Gold: ${balances.gold.N}`;
+        callback(balanceString);
+      });
+    });
+  }
   // If the command is known, let's execute it
+  /*
   if (commandName === '!bank') {
     account = new bank.Account(response => client.say(target, response.happy));
   } else if (commandName === '!balance') {
@@ -106,6 +122,8 @@ function onMessageHandler (target, context, msg, self) {
         client.say(target, balanceString);
       });
     });
+  } else if (commandName === '!update') {
+
   } else if (commandName === '!diceasdf') {
     const num = rollDice();
     client.say(target, `You rolled a ${num}`);
@@ -114,6 +132,7 @@ function onMessageHandler (target, context, msg, self) {
   else {
     console.log(`* Unknown command ${commandName}`);
   }
+  */
 
   // Temp functionality to test new bank class
   
