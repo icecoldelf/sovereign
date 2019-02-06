@@ -98,7 +98,7 @@ function onMessageHandler (target, context, msg, self) {
   // Use switch instead of if statements for readability
   switch(commandName) {
     case '!balance': checkBalance(context, response => client.say(target, response));
-
+    case '!acorpse': client.say(target, "You are under arrest!");
   } 
 
   function checkBalance(context, callback) {
