@@ -96,12 +96,16 @@ function onMessageHandler (target, context, msg, self) {
    });
 
   // Use switch instead of if statements for readability
-  switch(commandName) {
-    case '!balance': checkBalance(context, response => client.say(target, response));
-    case '!acorpse': client.say(target, "You are under arrest!");
+
+  commandArray = commandName.split(' ');
+  if (commandArray[0] != '!sov') commandArray = [];
+
+  switch(commandArray[1]) {
+    case 'balance': checkBalance(commandArray, context, response => client.say(target, response));
+    case 'happy': client.say(target, "Yaaay!");
   } 
 
-  function checkBalance(context, callback) {
+  function checkBalance(commandArray, context, callback) {
     new bank.Account(account => {
       account.accountNumber = context["user-id"];
       account.getBalance(balances => {
@@ -110,29 +114,6 @@ function onMessageHandler (target, context, msg, self) {
       });
     });
   }
-  // If the command is known, let's execute it
-  /*
-  if (commandName === '!bank') {
-    account = new bank.Account(response => client.say(target, response.happy));
-  } else if (commandName === '!balance') {
-    new bank.Account(account => {
-      account.accountNumber = context["user-id"];
-      account.getBalance(balances => {
-        let balanceString = `${context.username} balances are: Silver: ${balances.silver.N}, Gold: ${balances.gold.N}`;
-        client.say(target, balanceString);
-      });
-    });
-  } else if (commandName === '!update') {
-
-  } else if (commandName === '!diceasdf') {
-    const num = rollDice();
-    client.say(target, `You rolled a ${num}`);
-    console.log(`* Executed ${commandName} command`);
-  } 
-  else {
-    console.log(`* Unknown command ${commandName}`);
-  }
-  */
 
   // Temp functionality to test new bank class
   
