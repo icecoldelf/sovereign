@@ -59,7 +59,7 @@ class Twitch {
         let req = https.request(this.options, (res) => {
             res.setEncoding('utf8');
             res.on('data', (chunk) => {
-                callback(data.id);
+                callback(chunk.id);
                 //console.log("userdata: " + JSON.stringify(chunk));
             });
             res.on('end', () => {
