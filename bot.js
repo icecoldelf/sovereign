@@ -128,7 +128,7 @@ function onMessageHandler (target, context, msg, self) {
       if (["gold", "silver"].indexOf(command[2])) {
         new bank.Account(context["user-id"], account => {
           console.log("accountExists: " + account.accountExists);
-          let twitch = new Twitch('mjy60l6upiqb62b46kq1hyp6gwodow');
+          let twitch = new Twitch('');
           twitch.getUserID();
           account.updateBalance(command[2], command[3]);
           client.say(target, account.accountExists.toString());
