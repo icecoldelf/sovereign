@@ -60,6 +60,9 @@ class Twitch {
             res.on('data', (chunk) => {
                 console.log("userdata: " + JSON.stringify(chunk));
             });
+            res.on('end', () => {
+                console.log('No more data in response.');
+            });
         });
 
         req.on('error', (e) => {
