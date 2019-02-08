@@ -61,7 +61,7 @@ class Twitch {
             res.on('data', (chunk) => {
                 console.log("id: " + JSON.stringify(chunk));
                 console.log("userdata: " + JSON.stringify(chunk));
-                callback(chunk.id);
+                callback(JSON.stringify(chunk));
             });
             res.on('end', () => {
                 console.log('No more data in response.');
