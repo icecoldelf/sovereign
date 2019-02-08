@@ -34,17 +34,21 @@ class Account {
     }
 
     doesExist(callback) {
-      dynamoDB.getItem(this.params, function(err, data) {
-        if (err) {
-          console.log(err, err.stack);
-        } else {
-          if (Object.keys(data).length === 0 && data.constructor === Object) {
-            callback(false);
+      if (!this.accountExists) {
+        dynamoDB.getItem(this.params, function(err, data) {
+          if (err) {
+            console.log(err, err.stack);
           } else {
-            callback(true);
+            if (Object.keys(data).length === 0 && data.constructor === Object) {
+              callback(false);
+            } else {
+              callback(true);
+            }
           }
-        }
-      });
+        });
+      } else {
+        callback(true);
+      }
     }
 
     getBalance(currencyType, callback) {
@@ -73,7 +77,6 @@ class Account {
                 that.getBalance(function(response){
                   callback(response);
                 });
-                //callback(account.toString());
               });
             }
           });
