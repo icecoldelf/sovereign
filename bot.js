@@ -110,7 +110,7 @@ function onMessageHandler (target, context, msg, self) {
       break;
     case 'me':
       if (isMod(context)) {
-        client.say(target, context['user-type']);
+        client.say(target, "yaaay!");
       }
       break;
   } 
