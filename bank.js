@@ -21,7 +21,7 @@ class Account {
       this.params = {
         Key: {
           "accountNumber": {
-            S: this.accountNumber;
+            S: this.accountNumber
           }
         },
         TableName: "sovereignBank"
