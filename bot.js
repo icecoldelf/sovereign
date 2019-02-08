@@ -115,10 +115,25 @@ function onMessageHandler (target, context, msg, self) {
         client.say(target, "Not a Mod");
       }
       break;
+    case 'grant':
+      grantCurrency(commandArray, context, response => client.say(target, response));
+      break;
   } 
 
+  function grantCurrency(command, context, callback) {
+    if (isMod(context)) {
+      if (["gold", "silver"].indexOf(command[2])) {
+        new bank.Account(context["user-id"], account => {
+
+        });
+      }
+    } else {
+      callback("You do not have permission");
+    }
+  }
+
   function checkBalance(commandArray, context, callback) {
-    new bank.Account(account => {
+    new bank.Account(context["user-id"], account => {
       account.accountNumber = context["user-id"];
       account.getBalance(balances => {
         let balanceString = `${context.username} balances are: Silver: ${balances.silver.N}, Gold: ${balances.gold.N}`;

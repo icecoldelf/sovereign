@@ -13,13 +13,39 @@ class AccountMgr {
 }
 
 class Account {
-    constructor(callback) {
+    constructor(accountNumber, callback) {
       this.happy = "Sovereign Bank";
-      this.accountNumber;
+      this.accountExists = false;
+      this.accountNumber = accountNumber;
+
+      this.params = {
+        Key: {
+          "accountNumber": {
+            S: this.accountNumber;
+          }
+        },
+        TableName: "sovereignBank"
+      };
+
+      doesExist(response => this.accountExists = response);
 
       if (callback) {
         callback(this);
       }
+    }
+
+    doesExist(callback) {
+      dynamoDB.getItem(this.params, function(err, data) {
+        if (err) {
+          console.log(err, err.stack);
+        } else {
+          if (Object.keys(data).length === 0 && data.constructor === Object) {
+            callback(false);
+          } else {
+            callback(true);
+          }
+        }
+      });
     }
 
     getBalance(currencyType, callback) {
