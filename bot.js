@@ -106,7 +106,10 @@ function onMessageHandler (target, context, msg, self) {
       checkBalance(commandArray, context, response => client.say(target, response));
       break;
     case 'happy': 
-      client.say(target, "Yaaay!");
+      executeHappy(context, response => client.say(target, response));
+      break;
+    case 'me':
+      client.say(target, context['user-type']);
       break;
     default: {}
   } 
@@ -119,6 +122,12 @@ function onMessageHandler (target, context, msg, self) {
         callback(balanceString);
       });
     });
+  }
+
+  function executeHappy(context, callback) {
+
+
+    callback("Yaaay!");
   }
 
   // Temp functionality to test new bank class
