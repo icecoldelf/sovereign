@@ -111,7 +111,6 @@ function onMessageHandler (target, context, msg, self) {
     case 'me':
       client.say(target, context['user-type']);
       break;
-    default: {}
   } 
 
   function checkBalance(commandArray, context, callback) {
