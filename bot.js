@@ -100,7 +100,7 @@ function onMessageHandler (target, context, msg, self) {
   commandArray = commandName.split(' ');
   if (commandArray[0] != '!sov') commandArray = [];
   console.log("commandArray[1]: " + commandArray[1]);
-  console.log(context["user-type"]);
+  console.log(context.toString);
   switch(commandArray[1]) {
     case 'balance': 
       checkBalance(commandArray, context, response => client.say(target, response));
