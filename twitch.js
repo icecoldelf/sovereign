@@ -59,9 +59,9 @@ class Twitch {
         let req = https.request(this.options, (res) => {
             res.setEncoding('utf8');
             res.on('data', (chunk) => {
-                console.log("id: " + chunk.id);
+                console.log("id: " + JSON.stringify(chunk.data));
                 callback(chunk.id);
-                //console.log("userdata: " + JSON.stringify(chunk));
+                console.log("userdata: " + JSON.stringify(chunk));
             });
             res.on('end', () => {
                 console.log('No more data in response.');
