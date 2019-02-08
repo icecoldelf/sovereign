@@ -129,7 +129,7 @@ function onMessageHandler (target, context, msg, self) {
         new bank.Account(context["user-id"], account => {
           console.log("accountExists: " + account.accountExists);
           let twitch = new Twitch('mjy60l6upiqb62b46kq1hyp6gwodow');
-          twitch.getUserID(response => client.say(target, response));
+          twitch.getUserID("thefew", response => client.say(target, response));
           account.updateBalance(command[2], command[3]);
           //client.say(target, account.accountExists.toString());
         });
