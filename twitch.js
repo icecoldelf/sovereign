@@ -28,7 +28,7 @@ class Twitch {
 
     getStreams(cb) {
         //let data;
-        const req = https.request(this.options, (res) => {
+        let req = https.request(this.options, (res) => {
             console.log(`STATUS: ${res.statusCode}`);
             console.log(`HEADERS: ${JSON.stringify(res.headers)}`);
             res.setEncoding('utf8');
@@ -49,6 +49,21 @@ class Twitch {
         // write data to request body
         //req.write(postData);
         req.end();
+    }
+
+    getUserID(username, callback) {
+        this.options.path = '/helix/users?login=thefew';
+
+        let req = https.request(this.options, (res) => {
+            res.setEncoding('utf8');
+            res.on('data', (chunk) => {
+                console.log("userdata: " + JSON.stringify(chunk));
+            });
+        });
+
+        req.on('error', (e) => {
+            console.error(`problem with request: ${e.message}`);
+        });
     }
 }
 

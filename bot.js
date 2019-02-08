@@ -2,6 +2,7 @@ const tmi = require('tmi.js');
 const AWS = require('aws-sdk');
 const https = require('https');
 const bank = require('./bank');
+const Twitch = require('./twitch');
 AWS.config.update({region: 'us-east-1'});
 
 const options = {
@@ -120,11 +121,15 @@ function onMessageHandler (target, context, msg, self) {
       break;
   } 
 
+  //Grant currency to a specific user
   function grantCurrency(command, context, callback) {
     if (isMod(context)) {
       if (["gold", "silver"].indexOf(command[2])) {
         new bank.Account(context["user-id"], account => {
           console.log("accountExists: " + account.accountExists);
+          let twitch = new Twitch('mjy60l6upiqb62b46kq1hyp6gwodow');
+          twitch.getUserID();
+          account.updateBalance(command[2], command[3]);
           client.say(target, account.accountExists.toString());
         });
       }
