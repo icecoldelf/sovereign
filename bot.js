@@ -5,7 +5,7 @@ const bank = require('./bank');
 const Twitch = require('./twitch');
 AWS.config.update({region: 'us-east-1'});
 
-const options = {
+/*const options = {
   hostname: 'api.twitch.tv',
   port: 443,
   path: '/helix/streams?game_id=71375',
@@ -33,6 +33,7 @@ req.on('error', (e) => {
 });
 
 req.end();
+*/
 
 var dynamodb = new AWS.DynamoDB();
 
