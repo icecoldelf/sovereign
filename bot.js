@@ -124,7 +124,7 @@ function onMessageHandler (target, context, msg, self) {
     if (isMod(context)) {
       if (["gold", "silver"].indexOf(command[2])) {
         new bank.Account(context["user-id"], account => {
-
+          client.say(target, account.accountExists);
         });
       }
     } else {
