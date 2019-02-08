@@ -102,8 +102,12 @@ function onMessageHandler (target, context, msg, self) {
   console.log("commandArray[1]: " + commandArray[1]);
 
   switch(commandArray[1]) {
-    case 'balance': checkBalance(commandArray, context, response => client.say(target, response));
-    case 'happy': client.say(target, "Yaaay!");
+    case 'balance': 
+      checkBalance(commandArray, context, response => client.say(target, response));
+      break;
+    case 'happy': 
+      client.say(target, "Yaaay!");
+      break;
     default: {}
   } 
 
@@ -115,6 +119,9 @@ function onMessageHandler (target, context, msg, self) {
         callback(balanceString);
       });
     });
+
+  var happy =  ["asfd", "aasdrew", variable];
+  happy.push("afds");
   }
 
   // Temp functionality to test new bank class
