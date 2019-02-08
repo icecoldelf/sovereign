@@ -56,7 +56,7 @@ class Twitch {
         this.options.path = '/helix/users?login=thefew';
 
         console.log("getUserID_params: " + JSON.stringify(this.options));
-        let req = https.request(options, (res) => {
+        let req = https.request(this.options, (res) => {
             res.setEncoding('utf8');
             res.on('data', (chunk) => {
                 console.log("userdata: " + JSON.stringify(chunk));
