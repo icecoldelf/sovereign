@@ -53,17 +53,6 @@ class Twitch {
 
     getUserID(username, callback) {
 
-        let options = {
-            hostname: 'api.twitch.tv',
-            port: 443,
-            path: '/helix/users?login=thefew',
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/x-www-form-urlencoded',
-              //'Content-Length': Buffer.byteLength(postData),
-              'Client-ID': clientID
-            }
-        }
         this.options.path = '/helix/users?login=thefew';
 
         console.log("getUserID_params: " + JSON.stringify(this.options));
