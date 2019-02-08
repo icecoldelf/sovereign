@@ -119,9 +119,6 @@ function onMessageHandler (target, context, msg, self) {
         callback(balanceString);
       });
     });
-
-  var happy =  ["asfd", "aasdrew", variable];
-  happy.push("afds");
   }
 
   // Temp functionality to test new bank class
