@@ -80,6 +80,8 @@ class Twitch {
         req.on('error', (e) => {
             console.error(`problem with request: ${e.message}`);
         });
+
+        req.end();
     }
 }
 
