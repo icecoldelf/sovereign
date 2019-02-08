@@ -27,11 +27,10 @@ class Account {
         TableName: "sovereignBank"
       };
 
-      this.doesExist(response => this.accountExists = response);
-
-      if (callback) {
+      this.doesExist(response => {
+        this.accountExists = response;
         callback(this);
-      }
+      });
     }
 
     doesExist(callback) {
