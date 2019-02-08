@@ -61,7 +61,7 @@ class Account {
         if (err) {
           console.log(err, err.stack);
         } else {
-          this.doesExist(response => {
+          that.doesExist(response => {
             if (response) {
               console.log("getBalance:" + Object.entries(data.Item.balances.M));
               let balances = data.Item.balances.M;
