@@ -55,38 +55,28 @@ class Account {
         currencyType = null;
       }
 
-      console.log("accountNumber: " + this.accountNumber);
-      var params = {
-        Key: {
-          "accountNumber": {
-            S: this.accountNumber
-          }
-        },
-        TableName: "sovereignBank"
-      };
-
       //If no account exists, this will create an account
       var that = this;
-      dynamoDB.getItem(params,function(err, data) {
+      dynamoDB.getItem(this.params,function(err, data) {
         if (err) {
           console.log(err, err.stack);
         } else {
-          if (Object.keys(data).length === 0 && data.constructor === Object) {
-            console.log("No account with that number.");
-            that.createAccount(function(account) {
-              console.log("account:" + account[0]);
-              that.getBalance(function(response){
-                callback(response);
+          this.doesExist(response => {
+            if (response) {
+              console.log("getBalance:" + Object.entries(data.Item.balances.M));
+              let balances = data.Item.balances.M;
+              callback(balances);
+            } else {
+              console.log("No account with that number.")
+              that.createAccount(function(account) {
+                console.log("account:" + account[0]);
+                that.getBalance(function(response){
+                  callback(response);
+                });
+                //callback(account.toString());
               });
-              //callback(account.toString());
-            });
-            //callback("You don't have an account.");
-          } else {
-            console.log("getBalance:" + Object.entries(data.Item.balances.M));
-            let balances = data.Item.balances.M;
-            callback(balances);
-            //console.log(data);
-          }
+            }
+          });
         }
       });
 
