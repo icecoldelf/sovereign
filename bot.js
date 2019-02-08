@@ -128,10 +128,12 @@ function onMessageHandler (target, context, msg, self) {
   }
 
   function executeHappy(context, callback) {
-
-
-    callback("Yaaay!");
-  }
+    if (isMod(context)) {
+      callback("Yaaay!");
+    } else {
+      callback("Nope!");
+    }
+  } 
 
   function isMod(context) {
     if (context.mod || context.username == "thefew") {
