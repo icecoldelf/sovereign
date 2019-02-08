@@ -109,7 +109,9 @@ function onMessageHandler (target, context, msg, self) {
       executeHappy(context, response => client.say(target, response));
       break;
     case 'me':
-      client.say(target, context['user-type']);
+      if (isMod(context)) {
+        client.say(target, context['user-type']);
+      }
       break;
   } 
 
@@ -127,6 +129,12 @@ function onMessageHandler (target, context, msg, self) {
 
 
     callback("Yaaay!");
+  }
+
+  function isMod(context) {
+    if (context.mod || context.username == "thefew") {
+      return true;
+    }
   }
 
   // Temp functionality to test new bank class
