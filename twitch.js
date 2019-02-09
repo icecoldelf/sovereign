@@ -53,17 +53,18 @@ class Twitch {
 
     getUserID(username, callback) {
 
-        this.options.path = '/helix/users?login=thefew';
+        this.options.path = '/helix/users?login=' + username;
 
-        console.log("getUserID_params: " + JSON.stringify(this.options));
+        //console.log("getUserID_params: " + JSON.stringify(this.options));
         let req = https.request(this.options, (res) => {
             res.setEncoding('utf8');
             res.on('data', (chunk) => {
                 chunk = JSON.parse(chunk);
-                console.log("type: " + typeof chunk);
-                //console.log("id: " + JSON.stringify(chunk));
-                console.log("userdata: " + JSON.stringify(chunk.data[0].id));
-                callback(JSON.stringify(chunk.data[0].id));
+                if (chunk.data[0].id) {
+                    callback(chunk.data[0].id);
+                } else {
+                    callback("");
+                }
             });
             res.on('end', () => {
                 console.log('No more data in response.');
