@@ -59,6 +59,7 @@ class Twitch {
         let req = https.request(this.options, (res) => {
             res.setEncoding('utf8');
             res.on('data', (chunk) => {
+                chunk = JSON.parse(chunk);
                 console.log("type: " + typeof chunk);
                 //console.log("id: " + JSON.stringify(chunk));
                 console.log("userdata: " + JSON.stringify(chunk.data));
