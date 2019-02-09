@@ -62,8 +62,8 @@ class Twitch {
                 chunk = JSON.parse(chunk);
                 console.log("type: " + typeof chunk);
                 //console.log("id: " + JSON.stringify(chunk));
-                console.log("userdata: " + JSON.stringify(chunk.data));
-                callback(JSON.stringify(chunk));
+                console.log("userdata: " + JSON.stringify(chunk.data[0].id));
+                callback(JSON.stringify(chunk.data[0].id));
             });
             res.on('end', () => {
                 console.log('No more data in response.');
