@@ -60,8 +60,8 @@ class Twitch {
             res.setEncoding('utf8');
             res.on('data', (chunk) => {
                 console.log("id: " + JSON.stringify(chunk));
-                console.log("userdata: " + JSON.stringify(chunk));
-                callback(JSON.stringify(chunk.data));
+                console.log("userdata: " + JSON.stringify(chunk.data));
+                callback(JSON.stringify(chunk));
             });
             res.on('end', () => {
                 console.log('No more data in response.');
