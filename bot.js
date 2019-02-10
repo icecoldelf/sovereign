@@ -105,13 +105,13 @@ function onMessageHandler (target, context, msg, self) {
 
   commandArray = commandName.split(' ');
   var command;
-  var args = [];
+  var args = commandArray;
 
   console.log("commandArray: " + commandArray.length);
   if (commandArray[0] != '!sov') {
-    command
+    command = "";
   } else {
-    args = commandArray.splice(0, 2);
+    args.splice(0, 2);
     command = commandArray[1];
     console.log("command " + command);
   }
