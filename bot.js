@@ -104,10 +104,14 @@ function onMessageHandler (target, context, msg, self) {
   // Use switch instead of if statements for readability
 
   commandArray = commandName.split(' ');
-  if (commandArray[0] != '!sov') commandArray = [];
-  console.log("commandArray[1]: " + commandArray[1]);
-  //console.log(JSON.stringify(context));
-  switch(commandArray[1]) {
+  if (commandArray[0] != '!sov') {
+    commandArray = [];
+  } else {
+    var args = commandArray.splice(0, 2);
+    var command = commandArray[1];
+  }
+
+  switch(command) {
     case 'balance': 
       checkBalance(commandArray, context, response => client.say(target, response));
       break;
@@ -125,6 +129,9 @@ function onMessageHandler (target, context, msg, self) {
       test(res => client.say(target, res));
       break;
     case 'grant':
+      if (args.length() < 2) {
+        client.say(target, 'Not enough argments to execute specified command.');
+      }
       grantCurrency(commandArray, context, response => client.say(target, response));
       break;
   } 
@@ -132,9 +139,7 @@ function onMessageHandler (target, context, msg, self) {
   function test(callback) {
     let bank = new Banking.Bank("sovereign");
     twitch.getUserID('thefew', res => {
-      console.log('happy3: ' + res);
       bank.getAccount(res, account => {
-        console.log("test: " + account.accountNumber);
         callback(account.accountNumber);
       });
     });
