@@ -136,7 +136,7 @@ function onMessageHandler (target, context, msg, self) {
       break;
     case 'grant':
       console.log("grant");
-      if (args.length() < 2) {
+      if (args.length < 2) {
         client.say(target, 'Not enough argments to execute specified command.');
       }
       //grantCurrency(commandArray, context, response => client.say(target, response));
