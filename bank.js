@@ -2,15 +2,33 @@ const AWS = require('aws-sdk');
 AWS.config.update({region: 'us-east-1'});
 const dynamoDB = new AWS.DynamoDB();
 
-class AccountMgr {
-    constructor(callback) {
+class Bank {
 
+  currencyTypes = ['silver', 'gold'];
+
+  constructor () {
+
+  }
+
+  isAvailableCurrency(cType) {
+    if (this.currencyTypes.indexOf(cType)) {
+      return true;
+    } else {
+      return false;
     }
-
-    getAccount(accountNumber, callback) {
-
-    }
+  }
 }
+
+class AccountMgr {
+  constructor(callback) {
+
+  }
+
+  getAccount(accountNumber, callback) {
+
+  }
+}
+
 
 class Account {
     constructor(accountNumber, callback) {
@@ -34,6 +52,7 @@ class Account {
     }
 
     doesExist(callback) {
+      //if this.accountExists is already set to true, we want to avoid making another database call.
       if (!this.accountExists) {
         dynamoDB.getItem(this.params, function(err, data) {
           if (err) {
@@ -88,7 +107,7 @@ class Account {
       }
     }
 
-    updateBalance(accountNumber, currencyType, amount, callback) {
+    updateBalance(currencyType, amount, callback) {
       let params = {
         Key: {
           "accountNumber": accountNumber

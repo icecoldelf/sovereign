@@ -1,9 +1,11 @@
 const tmi = require('tmi.js');
 const AWS = require('aws-sdk');
 const https = require('https');
-const bank = require('./bank');
+const Bank = require('./bank');
 const Twitch = require('./twitch');
 AWS.config.update({region: 'us-east-1'});
+
+bank = new Bank();
 
 /*const options = {
   hostname: 'api.twitch.tv',
@@ -123,10 +125,11 @@ function onMessageHandler (target, context, msg, self) {
   } 
 
   //Grant currency to a specific user
+  //I need to send this function a specific user to add and the requester. Not the command object/context.
   function grantCurrency(command, context, callback) {
     if (isMod(context)) {
       if (["gold", "silver"].indexOf(command[2])) {
-        new bank.Account(context["user-id"], account => {
+        new Bank.Account(context["user-id"], account => {
           console.log("accountExists: " + account.accountExists);
           let twitch = new Twitch('mjy60l6upiqb62b46kq1hyp6gwodow');
           twitch.getUserID(command[3], response => client.say(target, response));
@@ -139,8 +142,18 @@ function onMessageHandler (target, context, msg, self) {
     }
   }
 
+  function grantCurrency2 (userID, cType, quantity, callback) {
+    if (isAvailableCurrencyType(cType)) {
+      let  account = new Bank.Account(userID);
+
+      account.updateBalance(cType, quantity, response => {
+        callback(response);
+      });
+    }
+  }
+
   function checkBalance(commandArray, context, callback) {
-    new bank.Account(context["user-id"], account => {
+    new Bank.Account(context["user-id"], account => {
       account.accountNumber = context["user-id"];
       account.getBalance(balances => {
         let balanceString = `${context.username} balances are: Silver: ${balances.silver.N}, Gold: ${balances.gold.N}`;
