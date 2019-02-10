@@ -4,7 +4,7 @@ const dynamoDB = new AWS.DynamoDB();
 
 class Bank {
 
-  currencyTypes
+  //currencyTypes
 
   constructor () {
     this.currencyTypes = ['silver', 'gold'];
