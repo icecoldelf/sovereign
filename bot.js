@@ -5,7 +5,9 @@ const Banking = require('./banking');
 const Twitch = require('./twitch');
 AWS.config.update({region: 'us-east-1'});
 
-bank = new Banking.Bank("sovereign");
+let bank = new Banking.Bank("sovereign");
+let twitch = new Twitch('mjy60l6upiqb62b46kq1hyp6gwodow');
+
 
 /*const options = {
   hostname: 'api.twitch.tv',
@@ -129,7 +131,6 @@ function onMessageHandler (target, context, msg, self) {
 
   function test(callback) {
     let bank = new Banking.Bank("sovereign");
-    let twitch = new Twitch('mjy60l6upiqb62b46kq1hyp6gwodow');
     twitch.getUserID('thefew', res => {
       console.log('happy3: ' + res);
       bank.getAccount(res, account => {
