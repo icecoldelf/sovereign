@@ -113,6 +113,7 @@ function onMessageHandler (target, context, msg, self) {
   } else {
     args.splice(0, 2);
     command = commandArray[1];
+    console.log("commandArray2: " + commandArray.length);
     console.log("command " + command);
   }
 
