@@ -165,6 +165,7 @@ class Account {
 }
 
 module.exports = {
+  Bank: Bank,
   AccountMgr : AccountMgr,
   Account : Account
 }

@@ -5,7 +5,7 @@ const Bank = require('./bank');
 const Twitch = require('./twitch');
 AWS.config.update({region: 'us-east-1'});
 
-bank = new Bank.Bank();
+bank = new Bank();
 
 /*const options = {
   hostname: 'api.twitch.tv',
