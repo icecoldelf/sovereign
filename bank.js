@@ -4,10 +4,10 @@ const dynamoDB = new AWS.DynamoDB();
 
 class Bank {
 
-  currencyTypes = ['silver', 'gold'];
+  currencyTypes;
 
   constructor () {
-
+    this.currencyTypes = ['silver', 'gold'];
   }
 
   isAvailableCurrency(cType) {
