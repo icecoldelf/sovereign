@@ -108,7 +108,7 @@ function onMessageHandler (target, context, msg, self) {
   var args = commandArray;
 
   console.log("commandArray: " + commandArray.length);
-  if (commandArray[0] != '!sov') {
+  if (commandArray[0] !== '!sov') {
     command = "";
   } else {
     args.splice(0, 2);
