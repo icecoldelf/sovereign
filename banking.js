@@ -18,7 +18,7 @@ class Bank {
   
   //returns Account object
   getAccount(userID, callback) {
-    account = new Account(userID, res => {
+    let account = new Account(userID, res => {
       if (res) {
         callback(account);
       } else {
