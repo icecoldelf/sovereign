@@ -104,17 +104,12 @@ function onMessageHandler (target, context, msg, self) {
   // Use switch instead of if statements for readability
 
   var commandArray = commandName.split(' ');
-  var command;
+  var command = "";
   var args = commandArray.slice();
 
-  console.log("commandArray: " + commandArray.length);
-  if (commandArray[0] !== '!sov') {
-    command = "";
-  } else {
+  if (commandArray[0] == '!sov') {
     args.splice(0, 2);
     command = commandArray[1];
-    console.log("commandArray2: " + commandArray.length);
-    console.log("command " + command);
   }
 
   switch(command) {
@@ -138,6 +133,10 @@ function onMessageHandler (target, context, msg, self) {
       console.log("grant");
       if (args.length < 2) {
         client.say(target, 'Not enough argments to execute specified command.');
+      } else {
+        if (typeof args[0] == "string" && typeof args[1] == "number") {
+          console.log("string & number");
+        }
       }
       //grantCurrency(commandArray, context, response => client.say(target, response));
       break;
