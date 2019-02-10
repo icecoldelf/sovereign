@@ -137,7 +137,7 @@ function onMessageHandler (target, context, msg, self) {
         if (typeof args[0] == "string" && typeof args[1] == "number") {
           console.log("string & number");
         } else {
-          console.log("pizza");
+          console.log("pizza: " console.log(typeof args[0]));
         }
       }
       //grantCurrency(commandArray, context, response => client.say(target, response));
