@@ -119,7 +119,7 @@ function onMessageHandler (target, context, msg, self) {
         client.say(target, "Not a Mod");
       }
       break;
-    case '':
+    case 'pizza':
       test(res => client.say(target, res));
       break;
     case 'grant':
