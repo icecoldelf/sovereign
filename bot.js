@@ -104,6 +104,7 @@ function onMessageHandler (target, context, msg, self) {
   // Use switch instead of if statements for readability
 
   commandArray = commandName.split(' ');
+  console.log("commandArray: " + commandArray[0]);
   if (commandArray[0] != '!sov') {
     commandArray = [];
   } else {
