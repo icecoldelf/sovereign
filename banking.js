@@ -26,7 +26,7 @@ class Bank {
         console.log('false');
         callback(false);
       }
-    });
+    }).bind(account);
      
     //callback(new Account(userID));
   }
