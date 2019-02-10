@@ -58,6 +58,7 @@ class Account {
         TableName: "sovereignBank"
       };
 
+      callback(true);
       //this.doesExist(response => {
         //this.accountExists = response;
         //callback(this);
