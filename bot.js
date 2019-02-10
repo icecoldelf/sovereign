@@ -134,10 +134,10 @@ function onMessageHandler (target, context, msg, self) {
       if (args.length < 2) {
         client.say(target, 'Not enough argments to execute specified command.');
       } else {
-        if (typeof args[0] == "string" && typeof args[1] == "number") {
+        if (typeof args[0] == "string" && isNumeric(args[1])) {
           console.log("string & number");
         } else {
-          console.log("pizza: " + typeof args[0]);
+          console.log("pizza: " + typeof args[0] + typeof args[1]);
         }
       }
       //grantCurrency(commandArray, context, response => client.say(target, response));
@@ -151,6 +151,10 @@ function onMessageHandler (target, context, msg, self) {
         callback(account.accountNumber);
       });
     });
+  }
+
+  function isNumeric(n) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
   }
 
   //Grant currency to a specific user
