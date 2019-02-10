@@ -1,7 +1,7 @@
 const tmi = require('tmi.js');
 const AWS = require('aws-sdk');
 const https = require('https');
-const Bank = require('./bank');
+const Bank = require('./banking');
 const Twitch = require('./twitch');
 AWS.config.update({region: 'us-east-1'});
 
