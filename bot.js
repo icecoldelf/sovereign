@@ -1,11 +1,11 @@
 const tmi = require('tmi.js');
 const AWS = require('aws-sdk');
 const https = require('https');
-const Bank = require('./banking');
+const Banking = require('./banking');
 const Twitch = require('./twitch');
 AWS.config.update({region: 'us-east-1'});
 
-bank = new Bank.Administration();
+bank = new Banking.Bank("sovereign");
 
 /*const options = {
   hostname: 'api.twitch.tv',
@@ -119,17 +119,30 @@ function onMessageHandler (target, context, msg, self) {
         client.say(target, "Not a Mod");
       }
       break;
+    case '':
+      test(res => client.say(target, res));
+      break;
     case 'grant':
       grantCurrency(commandArray, context, response => client.say(target, response));
       break;
   } 
+
+  function test(callback) {
+    let bank = new Banking.Bank();
+    let twitch = new Twitch('mjy60l6upiqb62b46kq1hyp6gwodow');
+    twitch.getUserID('thefew', res => {
+      bank.getAccount(res, account => {
+        callback(account.accountNumber);
+      });
+    });
+  }
 
   //Grant currency to a specific user
   //I need to send this function a specific user to add and the requester. Not the command object/context.
   function grantCurrency(command, context, callback) {
     if (isMod(context)) {
       if (["gold", "silver"].indexOf(command[2])) {
-        new Bank.Account(context["user-id"], account => {
+        new Banking.Account(context["user-id"], account => {
           console.log("accountExists: " + account.accountExists);
           let twitch = new Twitch('mjy60l6upiqb62b46kq1hyp6gwodow');
           twitch.getUserID(command[3], response => client.say(target, response));
@@ -144,7 +157,7 @@ function onMessageHandler (target, context, msg, self) {
 
   function grantCurrency2 (userID, cType, quantity, callback) {
     if (isAvailableCurrencyType(cType)) {
-      let  account = new Bank.Account(userID);
+      let  account = new Banking.Account(userID);
 
       account.updateBalance(cType, quantity, response => {
         callback(response);
@@ -153,7 +166,7 @@ function onMessageHandler (target, context, msg, self) {
   }
 
   function checkBalance(commandArray, context, callback) {
-    new Bank.Account(context["user-id"], account => {
+    new Banking.Account(context["user-id"], account => {
       account.accountNumber = context["user-id"];
       account.getBalance(balances => {
         let balanceString = `${context.username} balances are: Silver: ${balances.silver.N}, Gold: ${balances.gold.N}`;
@@ -176,7 +189,7 @@ function onMessageHandler (target, context, msg, self) {
     }
   }
 
-  // Temp functionality to test new bank class
+  // Temp functionality to test new banking class
   
 }
 

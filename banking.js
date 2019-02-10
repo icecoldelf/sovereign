@@ -3,22 +3,8 @@ AWS.config.update({region: 'us-east-1'});
 const dynamoDB = new AWS.DynamoDB();
 
 class Bank {
-  constructor () {
-
-  }
-
-  Account = class Account {
-    constructor () {
-
-    }
-  }
-}
-
-class Administration {
-
-  //currencyTypes
-
-  constructor () {
+  constructor (name) {
+    this.name = name;
     this.currencyTypes = ['silver', 'gold'];
   }
 
@@ -28,6 +14,19 @@ class Administration {
     } else {
       return false;
     }
+  }
+  
+  //returns Account object
+  getAccount(userID, callback) {
+    account = new Account(userID, res => {
+      if (res) {
+        callback(account);
+      } else {
+        callback(false);
+      }
+    });
+     
+    //callback(new Account(userID));
   }
 }
 
@@ -44,7 +43,7 @@ class AccountMgr {
 
 class Account {
     constructor(accountNumber, callback) {
-      this.happy = "Sovereign Bank";
+      //this.happy = "Sovereign Bank";
       this.accountExists = false;
       this.accountNumber = accountNumber;
 
@@ -57,10 +56,10 @@ class Account {
         TableName: "sovereignBank"
       };
 
-      this.doesExist(response => {
-        this.accountExists = response;
-        callback(this);
-      });
+      //this.doesExist(response => {
+        //this.accountExists = response;
+        //callback(this);
+      //});
     }
 
     doesExist(callback) {
