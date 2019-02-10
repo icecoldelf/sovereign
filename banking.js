@@ -18,15 +18,9 @@ class Bank {
   
   //returns Account object
   getAccount(userID, callback) {
-    let account = new Account(userID, res => {
-      if (res) {
-        console.log('true');
-        callback(account);
-      } else {
-        console.log('false');
-        callback(false);
-      }
-    }).bind(account);
+    let account = new Account(userID);
+    
+    callback(account);
      
     //callback(new Account(userID));
   }
