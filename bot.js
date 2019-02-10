@@ -120,7 +120,6 @@ function onMessageHandler (target, context, msg, self) {
       }
       break;
     case 'pizza':
-      console.log("happy");
       test(res => client.say(target, res));
       break;
     case 'grant':
@@ -129,7 +128,6 @@ function onMessageHandler (target, context, msg, self) {
   } 
 
   function test(callback) {
-    console.log("happy2");
     let bank = new Banking.Bank("sovereign");
     let twitch = new Twitch('mjy60l6upiqb62b46kq1hyp6gwodow');
     twitch.getUserID('thefew', res => {
