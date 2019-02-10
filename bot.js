@@ -130,10 +130,10 @@ function onMessageHandler (target, context, msg, self) {
 
   function test(callback) {
     console.log("happy2");
-    let bank = new Banking.Bank();
+    let bank = new Banking.Bank("sovereign");
     let twitch = new Twitch('mjy60l6upiqb62b46kq1hyp6gwodow');
     twitch.getUserID('thefew', res => {
-      console.log('happy3');
+      console.log('happy3: ' + bank.name);
       bank.getAccount(res, account => {
         console.log("test: " + account.accountNumber);
         callback(account.accountNumber);
