@@ -38,7 +38,7 @@ class AccountMgr {
 
 
 class Account {
-    constructor(accountNumber, callback) {
+    constructor(accountNumber) {
       //this.happy = "Sovereign Bank";
       this.accountExists = false;
       this.accountNumber = accountNumber;
@@ -52,7 +52,7 @@ class Account {
         TableName: "sovereignBank"
       };
 
-      callback(true);
+      //callback(true);
       //this.doesExist(response => {
         //this.accountExists = response;
         //callback(this);
