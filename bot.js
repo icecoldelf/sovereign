@@ -103,7 +103,7 @@ function onMessageHandler (target, context, msg, self) {
 
   // Use switch instead of if statements for readability
 
-  commandArray = commandName.split(' ');
+  var commandArray = commandName.split(' ');
   var command;
   var args = commandArray;
 
