@@ -129,6 +129,7 @@ function onMessageHandler (target, context, msg, self) {
   } 
 
   function test(callback) {
+    console.log("happy2");
     let bank = new Banking.Bank();
     let twitch = new Twitch('mjy60l6upiqb62b46kq1hyp6gwodow');
     twitch.getUserID('thefew', res => {
