@@ -133,6 +133,7 @@ function onMessageHandler (target, context, msg, self) {
     let bank = new Banking.Bank();
     let twitch = new Twitch('mjy60l6upiqb62b46kq1hyp6gwodow');
     twitch.getUserID('thefew', res => {
+      console.log('happy3');
       bank.getAccount(res, account => {
         console.log("test: " + account.accountNumber);
         callback(account.accountNumber);
