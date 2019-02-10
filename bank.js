@@ -110,7 +110,7 @@ class Account {
     updateBalance(currencyType, amount, callback) {
       let params = {
         Key: {
-          "accountNumber": accountNumber
+          "accountNumber": this.accountNumber
         },
         Items: {
           "Balances": {
