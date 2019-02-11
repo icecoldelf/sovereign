@@ -130,12 +130,20 @@ function onMessageHandler (target, context, msg, self) {
       test(res => client.say(target, res));
       break;
     case 'grant':
-      console.log("grant");
       if (args.length < 2) {
         client.say(target, 'Not enough argments to execute specified command.');
       } else {
-        if (typeof args[0] == "string" && isNumeric(args[1])) {
-          console.log("string & number");
+        let username = args[0];
+        let quantity = args[1];
+
+        if (typeof username == "string" && isNumeric(quantity)) {
+          grantCurrency2(username, 'silver', quantity, res => {
+            if (res) {
+              client.say(target, "success");
+            } else {
+              client.say(target, "sad");
+            }
+          });
         } else {
           console.log("pizza: " + typeof args[0] + typeof args[1]);
         }
@@ -176,8 +184,23 @@ function onMessageHandler (target, context, msg, self) {
   }
 
   function grantCurrency2 (userID, cType, quantity, callback) {
-    if (isAvailableCurrencyType(cType)) {
-      let  account = new Banking.Account(userID);
+    if (bank.isCurrencyType(cType)) {
+      console.log("yes currency type");
+      let account = bank.getAccount(userID);
+
+      if (account.doesExist()) {
+        console.log("itexists");
+        account.updateBalance(cType, quantity, res => {
+          console.log("update balance callback");
+          if (res) {
+            console.log("account update successfull");
+          } else {
+            console.log("account update failed");
+          }
+        });
+      } else {
+        console.log("it doesn't exist");
+      }
 
       account.updateBalance(cType, quantity, response => {
         callback(response);

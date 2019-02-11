@@ -8,7 +8,7 @@ class Bank {
     this.currencyTypes = ['silver', 'gold'];
   }
 
-  isAvailableCurrency(cType) {
+  isCurrencyType(cType) {
     if (this.currencyTypes.indexOf(cType)) {
       return true;
     } else {
@@ -115,7 +115,7 @@ class Account {
       }
     }
 
-    updateBalance(currencyType, amount, callback) {
+    updateBalance(cType, amount, callback) {
       let params = {
         Key: {
           "accountNumber": this.accountNumber
@@ -123,7 +123,7 @@ class Account {
         Items: {
           "Balances": {
             M: {
-              [currencyType]: {
+              [cType]: {
                 N: amount
               }
             }
@@ -134,9 +134,9 @@ class Account {
 
       dynamoDB.updateItem(params, function(err, data) {
         if (err) {
-
+          callback(false);
         } else {
-          callback("success");
+          callback(true);
         }
       });
     }
