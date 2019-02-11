@@ -9,9 +9,12 @@ class Bank {
   }
 
   isCurrencyType(cType) {
+    console.log("isCurrencyType: " + cType);
     if (this.currencyTypes.indexOf(cType)) {
+      console.log("cType: true");
       return true;
     } else {
+      console.log("cType: false");
       return false;
     }
   }
