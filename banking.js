@@ -11,6 +11,7 @@ class Bank {
   isCurrencyType(cType) {
     console.log("isCurrencyType: " + cType);
     console.log("cTypes:" + this.currencyTypes[0] + " " + this.currencyTypes[1]);
+    console.log("indexOf: " + this.currencyTypes.indexOf(cType));
     if (this.currencyTypes.indexOf(cType)) {
       console.log("cType: true");
       return true;
