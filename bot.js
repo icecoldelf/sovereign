@@ -130,14 +130,18 @@ function onMessageHandler (target, context, msg, self) {
       test(res => client.say(target, res));
       break;
     case 'grant':
+      console.log("grant");
       if (args.length < 2) {
         client.say(target, 'Not enough argments to execute specified command.');
       } else {
         let username = args[0];
         let quantity = args[1];
 
+        console.log("args");
         if (typeof username == "string" && isNumeric(quantity)) {
+          console.log("sring and number");
           grantCurrency2(username, 'silver', quantity, res => {
+            console.log("grantCurrency2 callback");
             if (res) {
               client.say(target, "success");
             } else {
@@ -184,6 +188,7 @@ function onMessageHandler (target, context, msg, self) {
   }
 
   function grantCurrency2 (userID, cType, quantity, callback) {
+    console.log("beginning of GC2 function");
     if (bank.isCurrencyType(cType)) {
       console.log("yes currency type");
       let account = bank.getAccount(userID);
