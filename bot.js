@@ -188,7 +188,7 @@ function onMessageHandler (target, context, msg, self) {
   }
 
   function grantCurrency2 (userID, cType, quantity, callback) {
-    console.log("beginning of GC2 function");
+    console.log("beginning of GC2 function: " + cType);
     if (bank.isCurrencyType(cType)) {
       console.log("yes currency type");
       let account = bank.getAccount(userID);
